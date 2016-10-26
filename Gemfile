@@ -21,6 +21,8 @@ gem 'redis', '~> 3.0'
 
 gem 'devise'
 
+gem 'cancan'
+
 group :development, :test do
 
   gem 'byebug', platform: :mri

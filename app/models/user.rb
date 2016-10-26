@@ -8,4 +8,15 @@ class User < ApplicationRecord
 
   # validations
   validates :username, presence: true
+
+
+  def admin?
+    # for oversight group
+    self.role.role_name == "Admin"
+  end
+
+  def regular?
+    # for bs leaders
+    self.role.role_name == "Regular"
+  end
 end
