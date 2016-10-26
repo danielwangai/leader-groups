@@ -17,8 +17,13 @@
         <td><%= role.role_name %></td>
         <td><%= role.description %></td>
         <td><%= link_to 'Show', role %></td>
-        <td><%= link_to 'Edit', edit_role_path(role) %></td>
-        <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :update, role %>
+          <td><%= link_to 'Edit', edit_user_path(role) %></td>
+        <% end %>
+
+        <% if can? :destroy, role %>
+          <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +31,6 @@
 
 <br>
 
-<%= link_to 'New Role', new_role_path %>
+<% if can? :destroy, User %>
+  <%= link_to 'New User', new_user_path %>
+<% end %>

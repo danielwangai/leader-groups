@@ -10,5 +10,8 @@
   <%= @role.description %>
 </p>
 
-<%= link_to 'Edit', edit_role_path(@role) %> |
+% if can? :update, @role %>
+  <td><%= link_to 'Edit', edit_user_path(@role) %></td>
+<% end %>
+|
 <%= link_to 'Back', roles_path %>
