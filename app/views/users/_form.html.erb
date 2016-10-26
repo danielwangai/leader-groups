@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :role_id %>
-    <%= f.text_field :role_id %>
+    <%= f.label :role_name %>
+    <%= collection_select :user, :role_id, Role.all, :id, :role_name, {prompt: true} %>
   </div>
 
   <div class="actions">
