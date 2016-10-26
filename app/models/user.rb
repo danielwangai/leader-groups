@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   # relationships
   belongs_to :role
+  belongs_to :group
 
   # validations
   validates :username, presence: true
