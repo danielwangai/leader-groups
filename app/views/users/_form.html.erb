@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :"Group name" %>
+    <%= collection_select :user, :group_id, Group.all, :id, :name, {prompt: true} %>
+  </div>
+
+  <div class="field">
     <%= f.hidden_field :password, value: 12345678 %>
   </div>
 
