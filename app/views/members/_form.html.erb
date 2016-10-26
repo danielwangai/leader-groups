@@ -22,6 +22,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
     <%= f.hidden_field :group_id, value: current_user.group.id %>
   </div>
 

@@ -7,6 +7,8 @@
     <tr>
       <th>First name</th>
       <th>Last name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
       <th>Group</th>
       <th colspan="3"></th>
     </tr>
@@ -17,6 +19,8 @@
       <tr>
         <td><%= member.first_name %></td>
         <td><%= member.last_name %></td>
+        <td><%= member.phone_number %></td>
+        <td><%= member.email %></td>
         <td><%= member.group.name %></td>
         <td><%= link_to 'Show', member %></td>
         <td><%= link_to 'Edit', edit_member_path(member) %></td>
