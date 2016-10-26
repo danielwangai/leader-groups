@@ -10,6 +10,10 @@ class User < ApplicationRecord
   # validations
   validates :username, presence: true
 
+  def group_name_where_leader
+    # returns the name of the group where user is a leader
+    self.group.name
+  end
 
   def admin?
     # for oversight group
