@@ -23,6 +23,8 @@ gem 'devise'
 
 gem 'cancan'
 
+gem 'cocoon'
+
 group :development, :test do
 
   gem 'byebug', platform: :mri
