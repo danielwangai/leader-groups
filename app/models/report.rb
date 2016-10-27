@@ -13,5 +13,6 @@ class Report < ApplicationRecord
 
   accepts_nested_attributes_for :meeting_challenges,
 									reject_if: proc { |attributes| attributes['challenge'].blank? },
+                  reject_if: proc { |attributes| attributes['requires_attention'].blank? },
 									allow_destroy: true
 end
