@@ -1,0 +1,60 @@
+<%= form_for(report) do |f| %>
+  <% if report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number_of_attendees %>
+    <%= f.number_field :number_of_attendees %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="field">
+    <h3>Topics discussed.</h3>
+    <div id="discussion_topics">
+      <%= f.fields_for :meeting_topics do |meeting_topic| %>
+        <%= render 'meeting_topic_fields', f: meeting_topic %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "Add topic", f, :meeting_topics, class: "form-button btn btn-default" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <h3>Challenges encountered in meeting.</h3>
+    <div id="discussion_challenge">
+      <%= f.fields_for :meeting_challenges do |meeting_challenge| %>
+        <%= render 'meeting_challenge_fields', f: meeting_challenge %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "Add challenge", f, :meeting_challenges, class: "form-button btn btn-default" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
