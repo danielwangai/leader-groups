@@ -25,6 +25,8 @@ gem 'cancan'
 
 gem 'cocoon'
 
+gem 'paperclip'
+
 group :development, :test do
 
   gem 'byebug', platform: :mri
