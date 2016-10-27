@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @archive.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @archive.description %>
+</p>
+
+<% @archive.documents.each_with_index do |document, index| %>
+  <p><%= link_to "#{index + 1} - #{document.book_file_name}", document.book.url %></p>
+<% end %>
+<%= link_to 'Edit', edit_archive_path(@archive) %> |
+<%= link_to 'Back', archives_path %>

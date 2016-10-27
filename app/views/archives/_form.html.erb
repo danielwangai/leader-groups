@@ -1,0 +1,39 @@
+<%= form_for(archive) do |f| %>
+  <% if archive.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(archive.errors.count, "error") %> prohibited this archive from being saved:</h2>
+
+      <ul>
+      <% archive.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <h3>Attach documents.</h3>
+    <div id="documents">
+      <%= f.fields_for :documents do |document| %>
+        <%= render 'document_fields', f: document %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "Add document", f, :documents, class: "form-button btn btn-default" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

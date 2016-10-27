@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027045540) do
+ActiveRecord::Schema.define(version: 20161027054054) do
+
+  create_table "archives", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "book_file_name"
+    t.string   "book_content_type"
+    t.integer  "book_file_size"
+    t.datetime "book_updated_at"
+    t.integer  "archive_id"
+    t.index ["archive_id"], name: "index_documents_on_archive_id"
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
