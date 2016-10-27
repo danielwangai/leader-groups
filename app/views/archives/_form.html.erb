@@ -21,6 +21,18 @@
     <%= f.text_area :description %>
   </div>
 
+  <div class="field">
+    <h3>Attach documents.</h3>
+    <div id="documents">
+      <%= f.fields_for :documents do |document| %>
+        <%= render 'document_fields', f: document %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "Add document", f, :documents, class: "form-button btn btn-default" %>
+      </div>
+    </div>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
