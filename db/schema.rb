@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027053859) do
+ActiveRecord::Schema.define(version: 20161027054054) do
 
   create_table "archives", force: :cascade do |t|
     t.string   "title"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20161027053859) do
     t.string   "book_content_type"
     t.integer  "book_file_size"
     t.datetime "book_updated_at"
+    t.integer  "archive_id"
+    t.index ["archive_id"], name: "index_documents_on_archive_id"
   end
 
   create_table "groups", force: :cascade do |t|
