@@ -30,6 +30,18 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
 
+  <div class="field">
+    <h3>Topics discussed.</h3>
+    <div id="discussion_topics">
+      <%= f.fields_for :meeting_topics do |meeting_topic| %>
+        <%= render 'meeting_topic_fields', f: meeting_topic %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "Add topic", f, :meeting_topics, class: "form-button btn btn-default" %>
+      </div>
+    </div>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
