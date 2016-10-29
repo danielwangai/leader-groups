@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events do
+    resource :event_members
+  end
   resources :archives
   resources :reports
   resources :members
