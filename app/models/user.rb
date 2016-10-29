@@ -7,6 +7,7 @@ class User < ApplicationRecord
   belongs_to :role
   belongs_to :group
   has_many :reports
+  has_many :members
 
   # validations
   validates :username, presence: true
