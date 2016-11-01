@@ -1,8 +1,18 @@
-<%= render 'home/main_menu' %>
+<div id="wrapper">
+  <%= render 'home/main_menu' %>
 
-<h1>Editing User</h1>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
+          <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+          <%= link_to 'Show', @user %> |
+          <%= link_to 'Back', users_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,17 @@
-<%= render 'home/main_menu' %>
+<div id="wrapper">
+  <%= render 'home/main_menu' %>
+  <div id="page-content-wrapper">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12">
+                <h1>Editing Group</h1>
 
-<h1>Editing Group</h1>
+                <%= render 'form', group: @group %>
 
-<%= render 'form', group: @group %>
-
-<%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>
+                <%= link_to 'Show', @group %> |
+                <%= link_to 'Back', groups_path %>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

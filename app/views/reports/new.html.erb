@@ -1,7 +1,16 @@
-<%= render 'home/main_menu' %>
+<div id="wrapper">
+  <%= render 'home/main_menu' %>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>New Report</h1>
 
-<h1>New Report</h1>
+          <%= render 'form', report: @report %>
 
-<%= render 'form', report: @report %>
-
-<%= link_to 'Back', reports_path %>
+          <%= link_to 'Back', reports_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,28 @@
-<%= render 'home/main_menu' %>
+<div id="wrapper">
+  <%= render 'home/main_menu' %>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
+          <p>
+            <strong>Username:</strong>
+            <%= @user.username %>
+          </p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+          <p>
+            <strong>Role:</strong>
+            <%= @user.role.role_name %>
+          </p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role.role_name %>
-</p>
-
-<% if can? :update, @user %>
-  <td><%= link_to 'Edit', edit_user_path(@user) %></td>
-<% end %>
-|
-<%= link_to 'Back', users_path %>
+          <% if can? :update, @user %>
+          <td><%= link_to 'Edit', edit_user_path(@user) %></td>
+          <% end %>
+          |
+          <%= link_to 'Back', users_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
