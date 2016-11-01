@@ -1,8 +1,16 @@
 <div id="wrapper">
   <%= render 'home/main_menu' %>
-  <h1>New Member</h1>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">  <%= render 'home/main_menu' %>
+          <h1>New Member</h1>
 
-  <%= render 'form', member: @member %>
+          <%= render 'form', member: @member %>
 
-  <%= link_to 'Back', members_path %>
+          <%= link_to 'Back', members_path %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
