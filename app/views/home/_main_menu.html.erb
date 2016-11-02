@@ -24,9 +24,11 @@
           <li>
               <%= link_to "Groups", groups_path %>
           </li>
-          <li>
-              <%= link_to "Users", users_path %>
-          </li>
+            <% if can? :create, User %>
+              <li>
+                <%= link_to "Group Leaders", users_path %>
+              </li>
+            <% end %>
           <li>
               <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
           </li>
