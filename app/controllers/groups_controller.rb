@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  # before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
   # GET /groups.json
@@ -14,17 +16,18 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @group = Group.new
+    # @group = Group.new
   end
 
   # GET /groups/1/edit
   def edit
+    authorize! :edit, @group
   end
 
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    # @group = Group.new(group_params)
 
     respond_to do |format|
       if @group.save
@@ -63,9 +66,9 @@ class GroupsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
+    # def set_group
+    #   @group = Group.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params

@@ -11,19 +11,17 @@
           <li>
               <%= link_to "Reports", reports_path %>
           </li>
-          <% if can? :create, Archive %>
-            <li>
-              <%= link_to "Archives", archives_path %>
-            </li>
-          <% end %>
-          <% if can? :create, Member %>
-            <li>
-              <%= link_to "Members", members_path %>
-            </li>
-          <% end %>
           <li>
-              <%= link_to "Groups", groups_path %>
+            <%= link_to "Archives", archives_path %>
           </li>
+          <li>
+            <%= link_to "Members", members_path %>
+          </li>
+          <% if can? :create, Group %>
+            <li>
+              <%= link_to "Groups", groups_path %>
+            </li>
+          <% end %>
             <% if can? :create, User %>
               <li>
                 <%= link_to "Group Leaders", users_path %>
