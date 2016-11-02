@@ -4,11 +4,11 @@
       <div class="container-fluid">
           <div class="row">
               <div class="col-lg-12">
-                <p id="notice"><%= notice %></p>
-
                 <h1>Members</h1>
-
-                <table>
+                <p class="info-content">
+                  The following is a list of members of <b><%= current_user.group.name %></b>, which you lead.
+                </p>
+                <table class="table table-striped">
                   <thead>
                     <tr>
                       <th>First name</th>
