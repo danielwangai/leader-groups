@@ -14,7 +14,7 @@ class Ability
       can :manage, Group
     else
       can :read, :all
-      can :manage, Members
+      can :manage, Member
       can :manage, Report
     end
   end
