@@ -13,6 +13,7 @@ class Ability
       can :manage, User
       can :manage, Group
       can :read, Report
+      can :read, Member
     else
       can :read, :all
       can :manage, Member

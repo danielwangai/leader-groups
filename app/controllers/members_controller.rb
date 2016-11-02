@@ -8,6 +8,7 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     @members = Member.all
+    @members_of_my_group = Member.where(group: current_user.group.id)
   end
 
   # GET /members/1
