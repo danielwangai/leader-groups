@@ -11,10 +11,12 @@
           <li>
               <%= link_to "Reports", reports_path %>
           </li>
-          <li>
+          <% if can? :create, Archive %>
+            <li>
               <%= link_to "Archives", archives_path %>
-          </li>
-          <% if can? :update, Member %>
+            </li>
+          <% end %>
+          <% if can? :create, Member %>
             <li>
               <%= link_to "Members", members_path %>
             </li>

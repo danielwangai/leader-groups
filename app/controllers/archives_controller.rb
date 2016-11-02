@@ -1,5 +1,7 @@
 class ArchivesController < ApplicationController
-  before_action :set_archive, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  # before_action :set_archive, only: [:show, :edit, :update, :destroy]
 
   # GET /archives
   # GET /archives.json
@@ -14,17 +16,18 @@ class ArchivesController < ApplicationController
 
   # GET /archives/new
   def new
-    @archive = Archive.new
+    # @archive = Archive.new
   end
 
   # GET /archives/1/edit
   def edit
+    authorize! :edit, @archive
   end
 
   # POST /archives
   # POST /archives.json
   def create
-    @archive = Archive.new(archive_params)
+    # @archive = Archive.new(archive_params)
 
     respond_to do |format|
       if @archive.save
@@ -63,9 +66,9 @@ class ArchivesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_archive
-      @archive = Archive.find(params[:id])
-    end
+    # def set_archive
+    #   @archive = Archive.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def archive_params
