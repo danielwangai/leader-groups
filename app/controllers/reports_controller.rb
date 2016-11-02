@@ -1,5 +1,7 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  # before_action :set_report, only: [:show, :edit, :update, :destroy]
 
   # GET /reports
   # GET /reports.json
@@ -14,17 +16,18 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
-    @report = Report.new
+    # @report = Report.new
   end
 
   # GET /reports/1/edit
   def edit
+    authorize! :edit, @report
   end
 
   # POST /reports
   # POST /reports.json
   def create
-    @report = Report.new(report_params)
+    # @report = Report.new(report_params)
 
     respond_to do |format|
       if @report.save
@@ -63,9 +66,9 @@ class ReportsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_report
-      @report = Report.find(params[:id])
-    end
+    # def set_report
+    #   @report = Report.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
