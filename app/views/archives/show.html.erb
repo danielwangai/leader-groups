@@ -28,7 +28,10 @@
             <% end %>
           <% end %>
           <div class="btn-group" role="group" aria-label="...">
-            <%= link_to 'Edit', edit_archive_path(@archive), class: "btn btn-warning" %>
+
+            <% if can? :update, @archive %>
+              <%= link_to 'Edit', edit_archive_path(@archive), class: "btn btn-warning" %>
+            <% end %>
             <%= link_to 'Back', archives_path, class: "btn btn-success" %>
           </div>
         </div>
