@@ -14,9 +14,11 @@
           <li>
               <%= link_to "Archives", archives_path %>
           </li>
-          <li>
+          <% if can? :update, Member %>
+            <li>
               <%= link_to "Members", members_path %>
-          </li>
+            </li>
+          <% end %>
           <li>
               <%= link_to "Groups", groups_path %>
           </li>

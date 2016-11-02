@@ -9,9 +9,13 @@ class Ability
     user ||= guest # Guest user
 
     if user.admin?
-      can :manage, :all
+      can :manage, Archive
+      can :manage, User
+      can :manage, Group
     else
       can :read, :all
+      can :manage, Members
+      can :manage, Report
     end
   end
 end

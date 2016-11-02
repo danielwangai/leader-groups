@@ -1,5 +1,8 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
+  # before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
   # GET /members.json
@@ -14,17 +17,18 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
-    @member = Member.new
+    # @member = Member.new
   end
 
   # GET /members/1/edit
   def edit
+    authorize! :edit, @member
   end
 
   # POST /members
   # POST /members.json
   def create
-    @member = Member.new(member_params)
+    # @member = Member.new(member_params)
 
     respond_to do |format|
       if @member.save
@@ -63,9 +67,9 @@ class MembersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_member
-      @member = Member.find(params[:id])
-    end
+    # def set_member
+    #   @member = Member.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
