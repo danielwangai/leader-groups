@@ -15,7 +15,6 @@ class Ability
       can :read, Report
       can :read, Member
     else
-      can :read, :all
       can :manage, Member
       can :manage, Report
       can :read, Archive

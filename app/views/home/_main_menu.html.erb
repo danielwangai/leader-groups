@@ -22,9 +22,13 @@
               <%= link_to "Groups", groups_path %>
             </li>
           <% end %>
-            <% if can? :create, User %>
+            <% if current_user.role.role_name == "Admin" %>
               <li>
                 <%= link_to "Group Leaders", users_path %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to current_user.group.name, "/groups/#{current_user.group.id}" %>
               </li>
             <% end %>
           <li>
