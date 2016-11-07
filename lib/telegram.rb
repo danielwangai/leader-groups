@@ -3,7 +3,7 @@ require 'telegrammer'
 # telegram class with methods for basic functionality
 class Telegram
 	def self.bot
-		Telegrammer::Bot.new('put bot id here')
+		Telegrammer::Bot.new("#{ENV['TELEGRAM_API_TOKEN']}")
 	end
 
 	def self.reply_markup options = []
