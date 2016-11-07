@@ -31,6 +31,8 @@ gem 'bootstrap-sass'
 
 gem 'telegrammer'
 
+gem 'figaro'
+
 group :development, :test do
 
   gem 'byebug', platform: :mri
