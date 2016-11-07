@@ -18,6 +18,7 @@ class Ability
       can :manage, Member
       can :manage, Report
       can :read, Archive
+      can :read, Group
     end
   end
 end
