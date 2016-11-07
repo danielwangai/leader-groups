@@ -29,6 +29,8 @@ gem 'paperclip'
 
 gem 'bootstrap-sass'
 
+gem 'telegrammer'
+
 group :development, :test do
 
   gem 'byebug', platform: :mri
