@@ -30,6 +30,11 @@ class Telegram
 		bot.send_message(chat_id: chat_id, text: text, rm: reply_markup)
 	end
 
+	def self.send_document chat_id, path
+		file = File.open(path)
+		bot.send_document(chat_id: chat_id, document: file)
+	end
+
 	def self.set_webhook url
 		# telegram url webhook
 		bot.set_webhook(url)
