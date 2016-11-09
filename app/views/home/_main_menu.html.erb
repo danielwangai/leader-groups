@@ -3,51 +3,51 @@
       <ul class="sidebar-nav">
           <li class="sidebar-brand">
               <b>
-                <a href="#">
+                <a class="sidebar_menu_link" href="#">
                   BS Leaders
                 </a>
               </b>
           </li>
           <% if can? :create, Group %>
           <li>
-            <%= link_to groups_path do %>
+            <%= link_to groups_path, class: "sidebar_menu_link" do %>
             Groups
             <% end %>
           </li>
           <% end %>
           <li>
-              <%= link_to reports_path do%>
+              <%= link_to reports_path, class: "sidebar_menu_link" do%>
                 <i class="fa fa-bar-chart" aria-hidden="true"></i> Reports
               <% end %>
           </li>
           <li>
-            <%= link_to archives_path do%>
+            <%= link_to archives_path, class: "sidebar_menu_link" do%>
               <i class="fa fa-file-archive-o" aria-hidden="true"></i> Archives
             <% end %>
           </li>
           <li>
-            <%= link_to members_path do%>
+            <%= link_to members_path, class: "sidebar_menu_link" do%>
               <i class="fa fa-address-book-o" aria-hidden="true"></i> Members
             <% end %>
           </li>
           <li>
-            <%= link_to broadcasts_path do %>
+            <%= link_to broadcasts_path, class: "sidebar_menu_link" do %>
               <i class="fa fa-bell-o" aria-hidden="true"></i> Broadcasts
             <% end %>
           </li>
             <% if current_user.role.role_name == "Admin" %>
               <li>
-                <%= link_to users_path do %>
+                <%= link_to users_path, class: "sidebar_menu_link" do %>
                   <i class="fa fa-users" aria-hidden="true"></i> Group Leaders
                 <% end %>
               </li>
             <% else %>
               <li>
-                <%= link_to current_user.group.name, "/groups/#{current_user.group.id}" %>
+                <%= link_to current_user.group.name, "/groups/#{current_user.group.id}", class: "sidebar_menu_link" %>
               </li>
             <% end %>
           <li>
-              <%= link_to destroy_user_session_path, :method => :delete do%>
+              <%= link_to destroy_user_session_path, :method => :delete, class: "sidebar_menu_link" do%>
                 <i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out
               <% end %>
           </li>
