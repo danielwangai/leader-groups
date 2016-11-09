@@ -30,6 +30,13 @@ class BroadcastsController < ApplicationController
       if @broadcast.save
         format.html { redirect_to @broadcast, notice: 'Broadcast was successfully created.' }
         format.json { render :show, status: :created, location: @broadcast }
+
+        chat_id = "#{ENV['TELEGRAM_CHAT_ID']}"
+        @broadcast_title = @broadcast.title
+        @broadcast_description = @broadcast.content
+        Telegram.send_message(chat_id, "BROADCAST: #{@broadcast_title.upcase}\n
+          #{@broadcast_description}
+          ", true, [])
       else
         format.html { render :new }
         format.json { render json: @broadcast.errors, status: :unprocessable_entity }
