@@ -34,7 +34,7 @@
               <% @archives.each do |archive| %>
               <tr>
                 <td class="info-content"><%= archive.title %></td>
-                <td class="info-content"><%= archive.description %></td>
+                <td class="info-content"><%= archive.description.truncate(60) %></td>
                 <td>
                   <%= link_to archive do %>
                     <span class="glyphicon glyphicon-folder-open"></span>
