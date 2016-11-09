@@ -8,26 +8,38 @@
                 </a>
               </b>
           </li>
-          <li>
-              <%= link_to "Reports", reports_path %>
-          </li>
-          <li>
-            <%= link_to "Archives", archives_path %>
-          </li>
-          <li>
-            <%= link_to "Members", members_path %>
-          </li>
           <% if can? :create, Group %>
-            <li>
-              <%= link_to "Groups", groups_path %>
-            </li>
+          <li>
+            <%= link_to groups_path do %>
+            Groups
+            <% end %>
+          </li>
           <% end %>
           <li>
-            <%= link_to "Broadcast", broadcasts_path %>
+              <%= link_to reports_path do%>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i> Reports
+              <% end %>
+          </li>
+          <li>
+            <%= link_to archives_path do%>
+              <i class="fa fa-file-archive-o" aria-hidden="true"></i> Archives
+            <% end %>
+          </li>
+          <li>
+            <%= link_to members_path do%>
+              <i class="fa fa-address-book-o" aria-hidden="true"></i> Members
+            <% end %>
+          </li>
+          <li>
+            <%= link_to broadcasts_path do %>
+              <i class="fa fa-bell-o" aria-hidden="true"></i> Broadcasts
+            <% end %>
           </li>
             <% if current_user.role.role_name == "Admin" %>
               <li>
-                <%= link_to "Group Leaders", users_path %>
+                <%= link_to users_path do %>
+                  <i class="fa fa-users" aria-hidden="true"></i> Group Leaders
+                <% end %>
               </li>
             <% else %>
               <li>
@@ -35,7 +47,9 @@
               </li>
             <% end %>
           <li>
-              <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+              <%= link_to destroy_user_session_path, :method => :delete do%>
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out
+              <% end %>
           </li>
       </ul>
   </div>

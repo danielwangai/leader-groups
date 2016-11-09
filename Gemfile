@@ -33,6 +33,8 @@ gem 'telegrammer'
 
 gem 'figaro'
 
+gem 'font-awesome-rails', '~> 4.7'
+
 group :development, :test do
 
   gem 'byebug', platform: :mri
