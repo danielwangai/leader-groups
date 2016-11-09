@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :broadcasts
   get 'notices/incoming'
 
   resources :archives
