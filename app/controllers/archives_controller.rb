@@ -33,6 +33,21 @@ class ArchivesController < ApplicationController
       if @archive.save
         format.html { redirect_to @archive, notice: 'Archive was successfully created.' }
         format.json { render :show, status: :created, location: @archive }
+
+        # send documents to telegram users
+        chat_id = "#{ENV['TELEGRAM_CHAT_ID']}"
+        @archived_books = @archive.documents
+        @archive_title = @archive.title
+        @archive_description = @archive.description
+
+        Telegram.send_message(chat_id, "#{@archive_title.upcase}\n
+          #{@archive_description}
+          ", true, [])
+        @archived_books.each do |document|
+          book = "public"+document.book.url.split("?")[0]
+          Telegram.send_document(chat_id, book)
+        end
+
       else
         format.html { render :new }
         format.json { render json: @archive.errors, status: :unprocessable_entity }
