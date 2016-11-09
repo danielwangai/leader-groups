@@ -14,11 +14,12 @@
                 <div class="panel-body">
                   <%= render 'form', broadcast: @broadcast %>
                 </div>
-
-                <div class="panel-footer">
-                  <%= link_to 'Show', @broadcast %> |
-                  <%= link_to 'Back', broadcasts_path %>
-                </div>
+                <% if can? :update, @broadcast or can? :update, @broadcast %>
+                  <div class="panel-footer">
+                    <%= link_to 'Show', @broadcast %> |
+                    <%= link_to 'Back', broadcasts_path %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>

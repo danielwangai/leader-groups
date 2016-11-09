@@ -14,8 +14,10 @@
                 <th>Title</th>
                 <th>Content</th>
                 <th colspan="3">Actions
-                  <%= link_to new_broadcast_path, class: "group-new" do %>
+                  <% if can? :create, Broadcast %>
+                    <%= link_to new_broadcast_path, class: "group-new" do %>
                     <span class="glyphicon glyphicon-plus"></span>Make Broadcast
+                    <% end %>
                   <% end %>
                 </th>
               </tr>
@@ -31,15 +33,19 @@
                     <span class="glyphicon glyphicon-folder-open"></span>
                     <% end %>
                   </td>
-                  <td><%= link_to edit_broadcast_path(broadcast) do %>
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to broadcast, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                      <span class="glyphicon glyphicon-trash"></span>
-                    <% end %>
-                  </td>
+                  <% if can? :update, broadcast %>
+                    <td><%= link_to edit_broadcast_path(broadcast) do %>
+                      <span class="glyphicon glyphicon-pencil"></span>
+                      <% end %>
+                    </td>
+                  <% end %>
+                  <% if can? :destroy, broadcast %>
+                    <td>
+                      <%= link_to broadcast, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <span class="glyphicon glyphicon-trash"></span>
+                      <% end %>
+                    </td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>

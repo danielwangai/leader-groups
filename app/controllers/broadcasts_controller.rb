@@ -1,5 +1,7 @@
 class BroadcastsController < ApplicationController
-  before_action :set_broadcast, only: [:show, :edit, :update, :destroy]
+  # before_action :set_broadcast, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  load_and_authorize_resource
 
   # GET /broadcasts
   # GET /broadcasts.json
@@ -14,17 +16,18 @@ class BroadcastsController < ApplicationController
 
   # GET /broadcasts/new
   def new
-    @broadcast = Broadcast.new
+    # @broadcast = Broadcast.new
   end
 
   # GET /broadcasts/1/edit
   def edit
+    authorize! :edit, @broadcast
   end
 
   # POST /broadcasts
   # POST /broadcasts.json
   def create
-    @broadcast = Broadcast.new(broadcast_params)
+    # @broadcast = Broadcast.new(broadcast_params)
 
     respond_to do |format|
       if @broadcast.save
@@ -70,9 +73,9 @@ class BroadcastsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_broadcast
-      @broadcast = Broadcast.find(params[:id])
-    end
+    # def set_broadcast
+    #   @broadcast = Broadcast.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def broadcast_params
