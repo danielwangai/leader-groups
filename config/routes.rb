@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  post 'incoming' => 'notices#incoming', as: 'incoming'
+  # post 'incoming' => 'notices#incoming', as: 'incoming'
+  post 'create' => 'reports#create', as: 'create'
+
   resources :roles
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
