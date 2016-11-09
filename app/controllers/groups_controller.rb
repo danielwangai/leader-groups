@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   load_and_authorize_resource
   # before_action :set_group, only: [:show, :edit, :update, :destroy]
 

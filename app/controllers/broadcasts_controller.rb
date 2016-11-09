@@ -1,3 +1,4 @@
+require 'telegram'
 class BroadcastsController < ApplicationController
   # before_action :set_broadcast, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
