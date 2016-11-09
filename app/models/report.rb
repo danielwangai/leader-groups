@@ -1,8 +1,8 @@
 class Report < ApplicationRecord
   # relationships
   belongs_to :user
-  has_many :meeting_topics
-  has_many :meeting_challenges
+  has_many :meeting_topics, dependent: :destroy
+  has_many :meeting_challenges, dependent: :destroy
 
   # validations
   validates :title, :content, :number_of_attendees, :user_id, presence: true

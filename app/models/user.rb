@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # relationships
   belongs_to :role
   belongs_to :group
-  has_many :reports
+  has_many :reports, dependent: :destroy
 
   # validations
   validates :username, presence: true

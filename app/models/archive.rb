@@ -1,6 +1,6 @@
 class Archive < ApplicationRecord
   # relationships
-  has_many :documents
+  has_many :documents, dependent: :destroy
 
   # validations
   validates :title, :description, presence: true
