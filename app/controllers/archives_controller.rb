@@ -40,7 +40,8 @@ class ArchivesController < ApplicationController
         @archive_title = @archive.title
         @archive_description = @archive.description
 
-        Telegram.send_message(chat_id, "#{@archive_title.upcase}\n
+        Telegram.send_message(chat_id, "Document - Upload
+          #{@archive_title.upcase}\n
           #{@archive_description}
           ", true, [])
         @archived_books.each do |document|
