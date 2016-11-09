@@ -14,11 +14,13 @@ class Ability
       can :manage, Group
       can :read, Report
       can :read, Member
+      can :manage, Broadcast
     else
       can :manage, Member
       can :manage, Report
       can :read, Archive
       can :read, Group
+      can :read, Broadcast
     end
   end
 end

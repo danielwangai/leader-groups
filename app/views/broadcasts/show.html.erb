@@ -1,0 +1,40 @@
+<div id="wrapper">
+  <%= render 'home/main_menu' %>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="col-md-12 col-md-offset-0">
+            <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h2>
+                    <%= @broadcast.title %>
+                  </h2>
+                </div>
+                <div class="panel-body">
+                  <p id="notice"><%= notice %></p>
+                  <p>
+                    <strong>Title:</strong>
+                    <%= @broadcast.title %>
+                  </p>
+
+                  <p>
+                    <strong>Content:</strong>
+                    <%= @broadcast.content %>
+                  </p>
+                </div>
+                <% if can? :update, @broadcast or can? :update, @broadcast %>
+                  <div class="panel-footer">
+                      <%= link_to 'Edit', edit_broadcast_path(@broadcast) %> |
+                      <%= link_to 'Back', broadcasts_path %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

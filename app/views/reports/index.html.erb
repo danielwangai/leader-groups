@@ -35,15 +35,14 @@
               <% @reports.each do |report| %>
               <tr>
                 <td><%= report.title %></td>
-                <td><%= report.content %></td>
+                <td><%= report.content.truncate(60) %></td>
                 <td><%= report.number_of_attendees %></td>
                 <td><%= report.user.username %></td>
-
-                  <td>
-                    <%= link_to report do %>
-                      <span class="glyphicon glyphicon-folder-open"></span>
-                    <% end %>
-                  </td>
+                <td>
+                  <%= link_to report do %>
+                  <span class="glyphicon glyphicon-folder-open"></span>
+                  <% end %>
+                </td>
                 <% if can? :update, Report %>
                   <td><%= link_to edit_report_path(report) do %>
                     <span class="glyphicon glyphicon-pencil"></span>

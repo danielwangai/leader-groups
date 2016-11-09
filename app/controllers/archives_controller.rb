@@ -1,5 +1,6 @@
+require 'telegram'
 class ArchivesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   load_and_authorize_resource
   # before_action :set_archive, only: [:show, :edit, :update, :destroy]
 
@@ -40,7 +41,8 @@ class ArchivesController < ApplicationController
         @archive_title = @archive.title
         @archive_description = @archive.description
 
-        Telegram.send_message(chat_id, "#{@archive_title.upcase}\n
+        Telegram.send_message(chat_id, "Document - Upload
+          #{@archive_title.upcase}\n
           #{@archive_description}
           ", true, [])
         @archived_books.each do |document|
