@@ -1,5 +1,8 @@
 class HarambeesController < ApplicationController
-  before_action :set_harambee, only: [:show, :edit, :update, :destroy]
+  before_action :set_harambee, only: [:show, :edit, :update, :destroy, :make_contribution]
+  before_action :authenticate_user!
+
+  respond_to :js, :json, :html
 
   # GET /harambees
   # GET /harambees.json
@@ -59,6 +62,21 @@ class HarambeesController < ApplicationController
       format.html { redirect_to harambees_url, notice: 'Harambee was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # method for making contributions
+  def make_contribution
+    # @members = current_user.group.members.all
+    @contribution = Contribution.new
+    # @contribution.amount = params[:amount]['amount']
+    @contribution.harambee_id = @harambee.id
+    @contribution.member_id = params[:member_id][:id]
+    @contribution.amount = params[:amount]
+    # @contribution.amount =
+    @contribution.save!
+    # redirect_to harambee_path, notice: "Contribution added successfully!"
+    respond_with @harambee
+    puts "----------- >>> #{params[:amount]}"
   end
 
   private

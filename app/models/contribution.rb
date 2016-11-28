@@ -4,5 +4,5 @@ class Contribution < ApplicationRecord
   belongs_to :harambee
 
   # validations
-  validates :amount, presence: true
+  # validates :amount, presence: true
 end

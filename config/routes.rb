@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   # post 'incoming' => 'notices#incoming', as: 'incoming'
   post 'create' => 'reports#create', as: 'create'
 
+  # post '/harambees/:id' => 'harambees#show'#, as: 'harambee_make_contribution'
+
+  post '/harambees/:id/make_contribution' => 'harambees#make_contribution', as: 'harambee_make_contribution'
+
   resources :roles
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
