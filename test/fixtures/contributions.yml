@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member: one
+  harambee: one
+  amount: 1
+
+two:
+  member: two
+  harambee: two
+  amount: 1
