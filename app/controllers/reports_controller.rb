@@ -104,6 +104,6 @@ class ReportsController < ApplicationController
     def report_params
       params.require(:report).permit(:title, :content, :number_of_attendees, :user_id,
         meeting_topics_attributes: [:id, :topic, :_destroy], meeting_challenges_attributes: [:id, :challenge,
-          :requires_attention, :_destroy])
+          :requires_attention, :_destroy], meeting_issues_attributes: [:id, :issue, :_destroy])
     end
 end
