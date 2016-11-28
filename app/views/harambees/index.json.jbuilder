@@ -1,0 +1,1 @@
+json.array! @harambees, partial: 'harambees/harambee', as: :harambee

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @harambee.description %>
+</p>
+
+<p>
+  <strong>Target amount:</strong>
+  <%= @harambee.target_amount %>
+</p>
+
+<%= link_to 'Edit', edit_harambee_path(@harambee) %> |
+<%= link_to 'Back', harambees_path %>

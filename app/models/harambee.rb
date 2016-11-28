@@ -1,0 +1,2 @@
+class Harambee < ApplicationRecord
+end
