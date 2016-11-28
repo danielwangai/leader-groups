@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(version: 20161128080703) do
     t.index ["report_id"], name: "index_meeting_challenges_on_report_id"
   end
 
+  create_table "meeting_issues", force: :cascade do |t|
+    t.string   "issue"
+    t.integer  "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_meeting_issues_on_report_id"
+  end
+
   create_table "meeting_topics", force: :cascade do |t|
     t.string   "topic"
     t.integer  "report_id"
