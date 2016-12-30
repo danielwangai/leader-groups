@@ -23,10 +23,16 @@
   </div>
 <% end %>
 
-<%= debug(params)%>
-
 <%= link_to 'Edit', edit_harambee_path(@harambee) %> |
 <%= link_to 'Back', harambees_path %>
+
+<div class="">
+  <%= @my_contributing_members.each do |member| %>
+    <p>
+      
+    </p>
+  <% end %>
+</div>
 
 <script type="text/javascript">
 harambee_id = '<%=@harambee.id %>';

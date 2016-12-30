@@ -13,6 +13,7 @@ class HarambeesController < ApplicationController
   # GET /harambees/1
   # GET /harambees/1.json
   def show
+    @my_contributing_members = Contribution.all.collect{|contr| contr.member}
   end
 
   # GET /harambees/new

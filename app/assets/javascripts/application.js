@@ -14,5 +14,8 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require cocoon
+//= require pikaday
+//= require jquery-ui/datepicker
+//= require gritter
 //= require turbolinks
 //= require_tree .

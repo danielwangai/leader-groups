@@ -1,0 +1,32 @@
+<input type="text" id="from_date">
+<input type="text" id="to_date">
+<button type="button" class="btn btn-warning" id="filter">Filter</button>
+
+Number of visitations: <%= @visitations %>
+Number of visitations: <%= @bereavements %>
+<script type="text/javascript">
+  var from_date = new Pikaday({
+        field: document.getElementById('from_date'),
+        format: 'DD MMM YYYY'
+    });
+    var to_date = new Pikaday({
+          field: document.getElementById('to_date'),
+          format: 'DD MMM YYYY'
+      });
+      $('#filter').click(function(){
+        var from = from_date._d;
+        var to = to_date._d;
+        console.log(from);
+        $.ajax({
+          type: "get",
+          url: "report",
+          success: function(data, status, xhr){
+            console.log(status);
+            window.open("?from="+from+"&to="+to, "_self")
+          },
+          error: function(xhr, status, error){
+            console.log(xhr);
+          }
+        });
+      });
+</script>

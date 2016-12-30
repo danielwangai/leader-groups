@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :reports
   resources :members
   resources :groups
+  resources :home
   devise_for :users
 
   root to: 'home#index'
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
 
   # post 'incoming' => 'notices#incoming', as: 'incoming'
   post 'create' => 'reports#create', as: 'create'
+
+  get 'report', to: 'home#report'
 
   # post '/harambees/:id' => 'harambees#show'#, as: 'harambee_make_contribution'
 

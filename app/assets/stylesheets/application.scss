@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require font-awesome
+ *= require pikaday
+ *= require jquery-ui/datepicker
  *= require_self
  */
 
@@ -19,6 +21,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome";
+ @import "gritter";
 
 body{
   font-family: 'Poiret One', cursive;
