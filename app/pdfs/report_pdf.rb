@@ -29,34 +29,12 @@ class ReportPdf < Prawn::Document
     end
 
     text "Report for BS Feedback", size: 20, :styles => [:bold, :underline]
-    formatted_text([
-      { :text => "Total Bereavements reported", style: :bold, size: 14 },
-      { :text => " - #{matters_hash['Bereavements']}", :styles=> [:bold, :italic], size: 14, :color => "#37b39d" }
-    ])
-    formatted_text([
-      { :text => "Total Visits made", style: :bold, size: 14 },
-      { :text => " - #{matters_hash['Visitations']}", :styles=> [:bold, :italic], size: 14, :color => "#37b39d" }
-    ])
-    formatted_text([
-      { :text => "Group with the most number of reports - ", style: :bold, size: 14 },
-      { :text => "#{groups_hash.key(groups_hash.values.max)}", :styles=> [:bold, :italic], size: 14, :color => "#37b39d" },
-      { :text => " with ", style: :bold, size: 14 },
-      { :text => "#{groups_hash.values.max}", :styles=> [:bold, :italic], size: 14, :color => "#37b39d" },
-      { :text => " reports", style: :bold, size: 14 }
-    ])
-    # formatted_text([
-    #   { :text => "Group with the most number of reports", size: 14 },
-    #   { :text => " - #{groups_hash.key(groups_hash.values.max)}", :styles=> [:bold, :italic], size: 14, :color => "#37b39d" },
-    #   { :text => " with ", styles: :bold, size: 14 },
-    #   { :text => " #{groups_hash.values.max}", :styles=> [:bold, :italic], size: 14, :color => "#37b39d" },
-    #   { :text => " reports", styles: :bold, size: 14 }
-    # ])
-    # text "Group with the most number of report - #{groups_hash.key(groups_hash.values.max)} with #{groups_hash.values.max} reports.", size: 16, style: :bold
-    # formatted_text([
-    #   { :text => "Bold and Italic!", :styles => [:bold, :italic] },
-    #   # Gotcha Arial is not known by default
-    #   { :text => " Colored Helvetica.", :font => "Helvetica", :color => "#37b39d" },
-    #   { :text => " GO big Runnable!", :size => 20 }
-    # ])
+    feedback_info = [["Total Bereavements reported", "#{matters_hash['Bereavements']}"],
+                      ["Total Visits made", "#{matters_hash['Visitations']}"],
+                      ["Group with the most number of reports ", "#{groups_hash.key(groups_hash.values.max)} with #{groups_hash.values.max} reports"]
+                    ]
+
+    table feedback_info, width: bounds.
+    move_down 20
   end
 end
