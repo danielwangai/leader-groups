@@ -9,6 +9,13 @@ class ReportsController < ApplicationController
   # GET /reports.json
   def index
     @reports = Report.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReportPdf.new(@reports)
+        send_data pdf.render, filename: "reports.pdf", type: "application/pdf", disposition: 'inline'
+      end
+    end
   end
 
   # GET /reports/1

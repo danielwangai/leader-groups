@@ -41,6 +41,10 @@ gem 'jquery-ui-rails'
 
 gem 'gritter'
 
+gem 'prawn'
+
+gem 'prawn-table'
+
 group :development, :test do
 
   gem 'byebug', platform: :mri
