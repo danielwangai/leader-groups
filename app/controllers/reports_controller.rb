@@ -41,27 +41,27 @@ class ReportsController < ApplicationController
         format.html { redirect_to @report, notice: 'Report was successfully created.' }
         format.json { render :show, status: :created, location: @report }
 
-        # send telegram info
-        # TELEGRAM_CHAT_ID
-        chat_id = "#{ENV['TELEGRAM_CHAT_ID']}"
-        Telegram.send_message(chat_id, "#{@report_title.upcase}\n
-        Report from #{@report.user.group.name.upcase}\n
-        #{@report_content}\n
-        The number of attendees were #{@report_number_of_attendees}.\n
-        Topics discussed were:
-        ", true, [])
-
-        @report_discussed_topics.each_with_index do |value, index|
-          Telegram.send_message(chat_id, "#{index + 1}: #{value.topic}", true, [])
-        end
-
-        Telegram.send_message(chat_id, "Challenges faced were:", true, [])
-
-        @report_challenges.each_with_index do |value, index|
-          Telegram.send_message(chat_id, "#{index + 1}: #{value.challenge}", true, [])
-        end
-
-        Telegram.send_message(chat_id, "Report by #{@report.user.username}", true, [])
+        # # send telegram info
+        # # TELEGRAM_CHAT_ID
+        # chat_id = "#{ENV['TELEGRAM_CHAT_ID']}"
+        # Telegram.send_message(chat_id, "#{@report_title.upcase}\n
+        # Report from #{@report.user.group.name.upcase}\n
+        # #{@report_content}\n
+        # The number of attendees were #{@report_number_of_attendees}.\n
+        # Topics discussed were:
+        # ", true, [])
+        #
+        # @report_discussed_topics.each_with_index do |value, index|
+        #   Telegram.send_message(chat_id, "#{index + 1}: #{value.topic}", true, [])
+        # end
+        #
+        # Telegram.send_message(chat_id, "Challenges faced were:", true, [])
+        #
+        # @report_challenges.each_with_index do |value, index|
+        #   Telegram.send_message(chat_id, "#{index + 1}: #{value.challenge}", true, [])
+        # end
+        #
+        # Telegram.send_message(chat_id, "Report by #{@report.user.username}", true, [])
         # render json: params
       else
         format.html { render :new }

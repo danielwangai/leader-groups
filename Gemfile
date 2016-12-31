@@ -35,6 +35,12 @@ gem 'figaro'
 
 gem 'font-awesome-rails', '~> 4.7'
 
+gem 'pikaday-gem'
+
+gem 'jquery-ui-rails'
+
+gem 'gritter'
+
 group :development, :test do
 
   gem 'byebug', platform: :mri
