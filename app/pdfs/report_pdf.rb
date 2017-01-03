@@ -34,7 +34,7 @@ class ReportPdf < Prawn::Document
                       ["Group with the most number of reports ", "#{groups_hash.key(groups_hash.values.max)} with #{groups_hash.values.max} reports"]
                     ]
 
-    table feedback_info, width: bounds.
+    table feedback_info, width: bounds.width
     move_down 20
   end
 end
