@@ -1,0 +1,38 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          %p#notice= notice
+          %h1 Archives
+          %div
+            %p.info-content
+              Below is a list of all materials uploaded for training.
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Title
+                %th Description
+                %th{:colspan => "3"}
+                  Actions
+                  - if can? :create, Archive
+                    = link_to new_archive_path, class: "group-new" do
+                      %span.glyphicon.glyphicon-plus>
+                      Add Document
+            %tbody
+              - @archives.each do |archive|
+                %tr
+                  %td.info-content= archive.title
+                  %td.info-content= archive.description.truncate(60)
+                  %td
+                    = link_to archive do
+                      %span.glyphicon.glyphicon-folder-open
+                  - if can? :update, archive
+                    %td
+                      = link_to edit_archive_path(archive) do
+                        %span.glyphicon.glyphicon-pencil
+                  - if can? :destroy, archive
+                    %td
+                      = link_to archive, method: :delete, data: { confirm: 'Are you sure?' } do
+                        %span.glyphicon.glyphicon-trash

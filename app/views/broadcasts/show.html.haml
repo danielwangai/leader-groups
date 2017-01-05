@@ -1,0 +1,25 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-12.col-md-offset-0
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h2
+                    = @broadcast.title
+                .panel-body
+                  %p#notice= notice
+                  %p
+                    %strong Title:
+                    = @broadcast.title
+                  %p
+                    %strong Content:
+                    = @broadcast.content
+                - if can? :update, @broadcast or can? :update, @broadcast
+                  .panel-footer
+                    = link_to 'Edit', edit_broadcast_path(@broadcast)
+                    |
+                    \#{link_to 'Back', broadcasts_path}

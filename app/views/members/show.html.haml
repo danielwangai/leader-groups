@@ -1,0 +1,34 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-8.col-md-offset-2
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h2
+                    %b Member Details
+                .panel-body
+                  %p#notice= notice
+                  %p
+                    %strong First name:
+                    = @member.first_name
+                  %p
+                    %strong Last name:
+                    = @member.last_name
+                  %p
+                    %strong Phone Number:
+                    = @member.phone_number
+                  %p
+                    %strong Email:
+                    = @member.email
+                  %p
+                    %strong Group:
+                    = @member.group.name
+                .panel-footer
+                  - if can? :update, @member
+                    = link_to 'Edit', edit_member_path(@member)
+                    |
+                  = link_to 'Back', members_path

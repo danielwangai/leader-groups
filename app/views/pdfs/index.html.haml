@@ -1,0 +1,94 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          %p#notice= notice
+          %h1 Reports
+          .ui.dropdown
+            .ui.simple.dropdown.item
+              Report period
+              %i.dropdown.icon
+              .menu
+                = link_to generate_reports_path(period: 'day') do
+                  #day.item Today
+                = link_to generate_reports_path(period: 'week') do
+                  #week.item Past Ones Week
+                = link_to generate_reports_path(period: 'month') do
+                  #month.item Past One Month
+                = link_to generate_reports_path(period: 'all') do
+                  #all_time.item All Time
+                .item#custom Custom
+
+          %input#date-from.disabled.hidden.ui.date{type: 'text', placeholder: "Start Date"}
+          %input#date-to.disabled.hidden.ui.date{type: 'text', placeholder: "End Date"}
+          .ui.button.hidden#filter
+            Filter
+          = link_to "PDF", reports_path(format: 'pdf'), class: "hidden pdf_link"
+    %br
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-12
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h1 Reports
+                .panel-body
+                  %h3
+                    %u Feedback
+                  %p= "Average attendance (all groups) - #{@reports.average(:number_of_attendees).to_i}"
+                  %p= "Group with highest number of reports - #{@groups_hash.key(@groups_hash.values.max)} with #{@groups_hash.values.max} reports"
+                  %p
+                    = "Total Bereavements - #{@matters_hash['Bereavements']}"
+                  %p
+                    = "Total Visitations made - #{@matters_hash['Visitations']}"
+                  %hr
+                  %h3
+                    %u Members report
+                  %p= "New added members - #{@new_members.count}"
+                  %p= "Group with highest number of members - #{@members.key(@members.values.max)} with #{@members.values.max} members"
+                .panel-footer
+:javascript
+  var from = new Pikaday({ field: document.getElementById('from') });
+  var to = new Pikaday({ field: document.getElementById('to') });
+
+  $(function(){
+    $("#filter").addClass("disabled");
+    new Pikaday({ field: document.getElementById('date-from') });
+    new Pikaday({ field: document.getElementById('date-to') });
+  });
+  $('#custom').click(function(){
+    $('#filter').removeClass('hidden');
+    $('.date').removeClass('hidden');
+  });
+  $('#day').click(function(){
+    //$('.pdf_link').removeClass('hidden');
+  });
+  $('.date').change(function(){
+    if ($('#date-from').val() != "" && $('#date-to').val() != ""){
+      $('#filter').removeClass('disabled');
+      $('.pdf_link').removeClass('hidden');
+    } else {
+      $("#filter").addClass("disabled");
+      $('.pdf_link').addClass('hidden');
+    }
+  });
+
+  //sending data
+  $('#filter').click(function(){
+    var from = document.getElementById("date-from").value;
+    var to = document.getElementById("date-to").value;
+    $.ajax({
+      type: "get",
+      url: "generate_reports",
+      success: function(data, status, xhr){
+        console.log(status);
+        window.open("?period=custom&from="+from+"&to="+to, "_self")
+      },
+      error: function(xhr, status, error){
+        console.log(xhr);
+      }
+    });
+  });

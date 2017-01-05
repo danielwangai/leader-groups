@@ -1,0 +1,28 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-8.col-md-offset-2
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h1
+                    = @user.username
+                    details.
+                .panel-body
+                  %p.info-content
+                    %strong username:
+                    = @user.username
+                  %p.info-content
+                    %strong email:
+                    = @user.email
+                  %p.info-content
+                    %strong Role:
+                    = @user.role.role_name
+                .panel-footer
+                  - if can? :update, @user
+                    = link_to 'Edit', edit_user_path(@user), class: "info-content"
+                  |
+                  \#{link_to 'Back', users_path, class: "info-content"}

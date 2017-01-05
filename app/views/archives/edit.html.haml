@@ -1,0 +1,17 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-8.col-md-offset-2
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h1 Editing Archive
+                .panel-body
+                  = render 'form', archive: @archive
+                .panel-footer
+                  = link_to 'Show', @archive
+                  |
+                  \#{link_to 'Back', archives_path}

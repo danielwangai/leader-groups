@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'generate_reports', to: 'pdfs#index', as: 'generate_reports'
+
   resources :harambees
   resources :broadcasts
   get 'notices/incoming'

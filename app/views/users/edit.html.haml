@@ -1,0 +1,17 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-8.col-md-offset-2
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h1 Editing User
+                .panel-body
+                  = render 'form', user: @user
+                .panel-footer
+                  = link_to 'Show', @user
+                  |
+                  \#{link_to 'Back', users_path}

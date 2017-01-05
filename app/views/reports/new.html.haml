@@ -1,0 +1,15 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-8.col-md-offset-2
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h1 New Report
+                .panel-body
+                  = render 'form', report: @report
+                .panel-footer
+                  = link_to 'Back', reports_path

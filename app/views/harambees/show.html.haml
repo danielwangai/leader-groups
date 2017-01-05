@@ -1,0 +1,33 @@
+%p#notice= notice
+%p
+  %strong Description:
+  = @harambee.description
+%p
+  %strong Target amount:
+  = @harambee.target_amount
+= form_tag harambee_make_contribution_path(@harambee, method: "post") do |f|
+  .form-group
+    .col-md-4
+      = collection_select(:member_id, :id, current_user.group.members, :id, :first_name, {prompt: "Select contributing member..."}, |
+        {class: "form-control", id: "member_select"} )                                                                              |
+    .col-md-4
+      Amount: #{text_field_tag(:amount)}
+    = submit_tag "Make contribution", class: 'btn btn-warning contribute'
+= link_to 'Edit', edit_harambee_path(@harambee)
+|
+= link_to 'Back', harambees_path
+%div
+  = @my_contributing_members.each do |member|
+    %p
+:javascript
+  harambee_id = '#{@harambee.id}';
+  $('.contribute').click(function () {
+    var selected_member = $('#member_select').val();
+    var contribution_amount = $('#amount').val();
+    $.ajax({
+      url: "/harambees/make_contribution",
+      type: "POST",
+      data: {"selected_member_id": selected_member, "amount_contributed": contribution_amount},
+      dataType: "json"
+    });
+  });

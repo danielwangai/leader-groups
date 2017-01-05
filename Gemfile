@@ -45,6 +45,12 @@ gem 'prawn'
 
 gem 'prawn-table'
 
+gem 'semantic-ui-sass'
+
+gem 'haml-rails'
+
+gem 'erb2haml'
+
 group :development, :test do
 
   gem 'byebug', platform: :mri

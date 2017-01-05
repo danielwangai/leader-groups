@@ -1,0 +1,43 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          %p#notice= notice
+          %h1 Reports
+          %div
+            = link_to "PDF", reports_path(format: 'pdf')
+            %p.info-content
+              Below is a list of all uploaded reports.
+          %table.table
+            %thead
+              %tr
+                %th Title
+                %th Content
+                %th Number of attendees
+                %th User
+                %th{:colspan => "3"}
+                  Actions
+                  - if can? :create, Report
+                    = link_to new_report_path, class: "group-new" do
+                      %span.glyphicon.glyphicon-plus>
+                      Create report
+            %tbody
+              - @reports.each do |report|
+                %tr
+                  %td= report.title
+                  %td= report.content.truncate(60)
+                  %td= report.number_of_attendees
+                  %td= report.user.username
+                  %td
+                    = link_to report do
+                      %span.glyphicon.glyphicon-folder-open
+                  - if can? :update, Report
+                    %td
+                      = link_to edit_report_path(report) do
+                        %span.glyphicon.glyphicon-pencil
+                  - if can? :destroy, Report
+                    %td
+                      = link_to report, method: :delete, data: { confirm: 'Are you sure?' } do
+                        %span.glyphicon.glyphicon-trash

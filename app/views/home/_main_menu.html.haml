@@ -1,0 +1,43 @@
+- if user_signed_in?
+  #sidebar-wrapper
+    %ul.sidebar-nav
+      %li.sidebar-brand
+        %b
+          %a.sidebar_menu_link{:href => "#"}
+            BS Leaders
+      - if can? :create, Group
+        %li
+          = link_to groups_path, class: "sidebar_menu_link" do
+            Groups
+      %li
+        = link_to reports_path, class: "sidebar_menu_link" do
+          %i.fa.fa-bar-chart{"aria-hidden" => "true"}
+          Feedback
+      %li
+        = link_to reports_path, class: "sidebar_menu_link" do
+          %i.fa.fa-bar-chart{"aria-hidden" => "true"}
+          Reports
+      %li
+        = link_to archives_path, class: "sidebar_menu_link" do
+          %i.fa.fa-file-archive-o{"aria-hidden" => "true"}
+          Archives
+      %li
+        = link_to members_path, class: "sidebar_menu_link" do
+          %i.fa.fa-address-book-o{"aria-hidden" => "true"}
+          Members
+      %li
+        = link_to broadcasts_path, class: "sidebar_menu_link" do
+          %i.fa.fa-bell-o{"aria-hidden" => "true"}
+          Broadcasts
+      - if current_user.role.role_name == "Admin"
+        %li
+          = link_to users_path, class: "sidebar_menu_link" do
+            %i.fa.fa-users{"aria-hidden" => "true"}
+            Group Leaders
+      - else
+        %li
+          = link_to current_user.group.name, "/groups/#{current_user.group.id}", class: "sidebar_menu_link"
+      %li
+        = link_to destroy_user_session_path, :method => :delete, class: "sidebar_menu_link" do
+          %i.fa.fa-sign-out{"aria-hidden" => "true"}
+          Sign Out

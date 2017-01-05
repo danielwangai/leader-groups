@@ -1,0 +1,22 @@
+= render 'home/main_menu'
+%p#notice= notice
+%h1 Roles
+%table
+  %thead
+    %tr
+      %th Role name
+      %th Description
+      %th{:colspan => "3"}
+  %tbody
+    - @roles.each do |role|
+      %tr
+        %td= role.role_name
+        %td= role.description
+        %td= link_to 'Show', role
+        - if can? :update, role
+          %td= link_to 'Edit', edit_user_path(role)
+        - if can? :destroy, role
+          %td= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+- if can? :destroy, User
+  = link_to 'New User', new_user_path

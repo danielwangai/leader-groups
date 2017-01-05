@@ -1,0 +1,12 @@
+= render 'home/main_menu'
+%p#notice= notice
+%p
+  %strong Role name:
+  = @role.role_name
+%p
+  %strong Description:
+  = @role.description
+\% if can? :update, @role %&gt;
+%td= link_to 'Edit', edit_user_path(@role)
+|
+= link_to 'Back', roles_path

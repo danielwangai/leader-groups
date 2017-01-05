@@ -1,0 +1,53 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-12.col-md-offset-0
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h1
+                    %b= @group.name
+                    details.
+                .panel-body
+                  - if @group.members.any?
+                    %h3
+                      %u
+                        List of
+                        %b= @group.name
+                        group members.
+                    %table.table.table-striped
+                      %thead
+                        %tr
+                          %th First name
+                          %th Last name
+                          %th Group
+                          %th{:colspan => "3"}
+                            Actions
+                            - if can? :create, Member
+                              = link_to new_member_path, class: "group-new" do
+                                %span.glyphicon.glyphicon-plus>
+                                Add member
+                      %tbody
+                        - @group.members.each do |member|
+                          %tr
+                            %td= member.first_name
+                            %td= member.last_name
+                            %td= member.group.name
+                            %td
+                              = link_to member do
+                                %span.glyphicon.glyphicon-folder-open
+                            - if can? :update, member
+                              %td
+                                = link_to edit_member_path(member) do
+                                  %span.glyphicon.glyphicon-pencil
+                            - if can? :destroy, member
+                              %td
+                                = link_to member, method: :delete, data: { confirm: 'Are you sure?' } do
+                                  %span.glyphicon.glyphicon-trash
+                .panel-footer
+                  = link_to 'Edit', edit_group_path(@group)
+                  |
+                  \#{link_to 'Back', groups_path}

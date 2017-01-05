@@ -1,0 +1,25 @@
+= form_for(member) do |f|
+  - if member.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(member.errors.count, "error")
+        prohibited this member from being saved:
+      %ul
+        - member.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :first_name
+    = f.text_field :first_name, class: "form-control"
+  .form-group
+    = f.label :last_name
+    = f.text_field :last_name, class: "form-control"
+  .form-group
+    = f.label :phone_number
+    = f.text_field :phone_number, class: "form-control"
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: "form-control"
+  .field
+    = f.hidden_field :group_id, value: current_user.group.id
+  .actions
+    = f.button :submit, class: "btn btn-primary"

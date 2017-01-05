@@ -22,6 +22,7 @@
  @import "bootstrap";
  @import "font-awesome";
  @import "gritter";
+ @import "semantic-ui";
 
 body{
   font-family: 'Poiret One', cursive;
@@ -32,4 +33,8 @@ body{
   a:hover{
     color: #37b39d;
   }
+}
+#filter{
+  background-color: #37b39d;
+  border-color: #37b39d;
 }

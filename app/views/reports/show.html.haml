@@ -1,0 +1,30 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-8.col-md-offset-2
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h3
+                    %b= @report.title
+                .panel-body
+                  %p.info-content
+                    %strong Title:
+                    = @report.title
+                  %p.info-content
+                    %strong Content:
+                    = @report.content
+                  %p.info-content
+                    %strong Number of attendees:
+                    = @report.number_of_attendees
+                  %p.info-content
+                    %strong User:
+                    = @report.user.username
+                .panel-footer
+                  - if can? :destroy, @report
+                    = link_to 'Edit', edit_report_path(@report)
+                    |
+                  = link_to 'Back', reports_path

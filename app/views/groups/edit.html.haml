@@ -1,0 +1,17 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-8.col-md-offset-2
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h1 Editing Group
+                .panel-body
+                  = render 'form', group: @group
+                .panel-footer
+                  = link_to 'Show', @group
+                  |
+                  \#{link_to 'Back', groups_path}

@@ -1,0 +1,18 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .col-md-8.col-md-offset-2
+            .row
+              .panel.panel-default
+                .panel-heading
+                  %h1 Editing Broadcast
+                .panel-body
+                  = render 'form', broadcast: @broadcast
+                - if can? :update, @broadcast or can? :update, @broadcast
+                  .panel-footer
+                    = link_to 'Show', @broadcast
+                    |
+                    \#{link_to 'Back', broadcasts_path}

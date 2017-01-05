@@ -1,0 +1,35 @@
+#wrapper
+  = render 'home/main_menu'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          %p#notice= notice
+          %h1 Broadcasts
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Title
+                %th Content
+                %th{:colspan => "3"}
+                  Actions
+                  - if can? :create, Broadcast
+                    = link_to new_broadcast_path, class: "group-new" do
+                      %span.glyphicon.glyphicon-plus>
+                      Make Broadcast
+            %tbody
+              - @broadcasts.each do |broadcast|
+                %tr
+                  %td= broadcast.title
+                  %td= broadcast.content.truncate(60)
+                  %td
+                    = link_to broadcast do
+                      %span.glyphicon.glyphicon-folder-open
+                  - if can? :update, broadcast
+                    %td
+                      = link_to edit_broadcast_path(broadcast) do
+                        %span.glyphicon.glyphicon-pencil
+                  - if can? :destroy, broadcast
+                    %td
+                      = link_to broadcast, method: :delete, data: { confirm: 'Are you sure?' } do
+                        %span.glyphicon.glyphicon-trash
