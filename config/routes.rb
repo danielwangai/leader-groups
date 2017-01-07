@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'generate_reports', to: 'pdfs#index', as: 'generate_reports'
+  get 'analytics', to: 'pdfs#index', as: 'analytics'
+  get 'charts', to: 'pdfs#charts', as: 'charts'
 
   resources :harambees
   resources :broadcasts

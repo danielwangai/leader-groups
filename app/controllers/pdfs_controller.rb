@@ -82,4 +82,8 @@ class PdfsController < ApplicationController
     #   end
     # end
   end
+
+  def charts
+    
+  end
 end

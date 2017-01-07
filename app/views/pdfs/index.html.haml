@@ -11,13 +11,13 @@
               Report period
               %i.dropdown.icon
               .menu
-                = link_to generate_reports_path(period: 'day') do
+                = link_to analytics_path(period: 'day') do
                   #day.item Today
-                = link_to generate_reports_path(period: 'week') do
+                = link_to analytics_path(period: 'week') do
                   #week.item Past Ones Week
-                = link_to generate_reports_path(period: 'month') do
+                = link_to analytics_path(period: 'month') do
                   #month.item Past One Month
-                = link_to generate_reports_path(period: 'all') do
+                = link_to analytics_path(period: 'all') do
                   #all_time.item All Time
                 .item#custom Custom
 
@@ -97,7 +97,7 @@
     var to = document.getElementById("date-to").value;
     $.ajax({
       type: "get",
-      url: "generate_reports",
+      url: "analytics",
       success: function(data, status, xhr){
         console.log(status);
         window.open("?period=custom&from="+from+"&to="+to, "_self")

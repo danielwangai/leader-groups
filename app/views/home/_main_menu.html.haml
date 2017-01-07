@@ -10,13 +10,13 @@
           = link_to groups_path, class: "sidebar_menu_link" do
             Groups
       %li
-        = link_to reports_path, class: "sidebar_menu_link" do
+        = link_to "/analytics?period=all", class: "sidebar_menu_link" do
           %i.fa.fa-bar-chart{"aria-hidden" => "true"}
-          Feedback
+          Analytics
       %li
-        = link_to reports_path, class: "sidebar_menu_link" do
+        = link_to "charts?period=all", class: "sidebar_menu_link" do
           %i.fa.fa-bar-chart{"aria-hidden" => "true"}
-          Reports
+          Graph Charts
       %li
         = link_to archives_path, class: "sidebar_menu_link" do
           %i.fa.fa-file-archive-o{"aria-hidden" => "true"}
