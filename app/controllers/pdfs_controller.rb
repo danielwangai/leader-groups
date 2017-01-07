@@ -66,6 +66,13 @@ class PdfsController < ApplicationController
       @members[grp] += 1
     end
 
+    # attendance over last few months
+    @report_months_hash = Hash.new 0
+    @months = @reports.collect{|month| month.created_at.strftime("%B")}
+    @months.each do |month|
+      @report_months_hash[month] += 1
+    end
+
     # for PDFs
     # respond_to do |format|
     #   format.html

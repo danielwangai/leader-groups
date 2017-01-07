@@ -38,17 +38,32 @@
                 .panel-body
                   %h3
                     %u Feedback
-                  %p= "Average attendance (all groups) - #{@reports.average(:number_of_attendees).to_i}"
-                  %p= "Group with highest number of reports - #{@groups_hash.key(@groups_hash.values.max)} with #{@groups_hash.values.max} reports"
                   %p
-                    = "Total Bereavements - #{@matters_hash['Bereavements']}"
+                    = "Average attendance (for all groups) - "
+                    %b= "#{@reports.average(:number_of_attendees).to_i}"
                   %p
-                    = "Total Visitations made - #{@matters_hash['Visitations']}"
+                    = "Group with highest number of reports - "
+                    %b= "#{@groups_hash.key(@groups_hash.values.max)} "
+                    %span= "with "
+                    %b= "#{@groups_hash.values.max} "
+                    %span= "reports"
+                  %p
+                    = "Total Bereavements - "
+                    %b= "#{@matters_hash['Bereavements']}"
+                  %p
+                    = "Total Visitations made - "
+                    %b="#{@matters_hash['Visitations']}"
                   %hr
                   %h3
                     %u Members report
-                  %p= "New added members - #{@new_members.count}"
-                  %p= "Group with highest number of members - #{@members.key(@members.values.max)} with #{@members.values.max} members"
+                  %p
+                    = "New added members - "
+                    %b= "#{@new_members.count}"
+                  %p
+                    = "Group with highest number of members - "
+                    %b= "#{@members.key(@members.values.max)} "
+                    %span= "with "
+                    %b= "#{@members.values.max} members"
                 .panel-footer
 :javascript
   var from = new Pikaday({ field: document.getElementById('from') });

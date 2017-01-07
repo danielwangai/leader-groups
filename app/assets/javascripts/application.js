@@ -19,4 +19,5 @@
 //= require jquery-ui/datepicker
 //= require gritter
 //= require turbolinks
+//= require plotly-latest.min
 //= require_tree .

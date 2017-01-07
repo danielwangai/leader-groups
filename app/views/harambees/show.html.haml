@@ -17,8 +17,8 @@
 |
 = link_to 'Back', harambees_path
 %div
-  = @my_contributing_members.each do |member|
-    %p
+  - @my_contributing_members.each do |member|
+    %p= member.first_name
 :javascript
   harambee_id = '#{@harambee.id}';
   $('.contribute').click(function () {
